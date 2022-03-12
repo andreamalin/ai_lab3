@@ -33,10 +33,11 @@ def plot_tour(tour, value, coordinates):
     x1, y1 = coordinates[tour[0]]
     plt.scatter(int(x0), int(y0), s=15, c='r')      
     plt.plot([x1, x0], [y1, y0], c='b')             
-    for i in range(num - 1):
-        x0, y0 = coordinates[tour[i]]
-        x1, y1 = coordinates[tour[i + 1]]
-        plt.scatter(int(x0), int(y0), s=15, c='r') 
+    for i in range(num):
+        x0, y0 = coordinates[tour[i-1]]
+        x1, y1 = coordinates[tour[i]]
+        plt.scatter(int(x0), int(y0), s=15, c='r')
+        plt.annotate(tour[i] + 1, (int(x0), int(y0)))
         plt.plot([x1, x0], [y1, y0], c='b')         
 
     plt.xlabel("Total mileage of the tour:{:.1f}".format(value))
