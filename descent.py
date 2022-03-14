@@ -70,6 +70,25 @@ def plot_errs(error, label):
   plt.plot(error[1:len(error)], label=label)
   plt.xlabel('step')
   plt.ylabel('error')
+
+  #Obteniendo las primeras y ultimas 4 aproximaciones Xk
+  firstError = np.round(error[1:5], decimals=7)
+  lastError = np.round(error[-4:], decimals=7)
+  errorValues = [np.concatenate((firstError , lastError))]
+  
+  rows = ["Error"]
+  columns = ['1', '2', '3', '4', 'n-3','n-2' ,'n-1','n']
+  rowColor = ["#8FC8F4"]
+  colColor = ['#95CFFB', '#97D0FB', '#A2D5FC', '#AEDBFE', '#B4DDFE','#BADFFE' ,'#C8E6FF','#D1EAFF']
+
+  plt.table(
+    cellText=errorValues, 
+    colLabels=columns,
+    rowLabels=rows,
+    loc="top",
+    rowColours=rowColor,
+    colColours=colColor 
+    )
   plt.show()
 
 if __name__ == '__main__':
